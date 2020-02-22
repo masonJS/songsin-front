@@ -5,11 +5,19 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "./scripts/deploy.sh"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "core-js": "^3.4.3",
-    "vue": "^2.6.10"
+    "ffp-js": "0.0.21",
+    "moment": "^2.24.0",
+    "vue": "^2.6.10",
+    "vue-progressbar": "^0.7.5",
+    "vuex": "^3.1.2",
+    "vuex-persist": "^2.2.0",
+    "xlsx": "^0.15.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
@@ -18,6 +26,9 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "vue-router": "^3.1.3",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
