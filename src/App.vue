@@ -1,28 +1,51 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" :style="{ 'background-image': 'url(' + CONST.resourceURL + background + ')'}">
+    <navigation></navigation>
+    <container></container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Navigation from '@/views/Navigation'
+import Container from '@/views/Container'
+import { eventBus } from "./utils/event";
+import { match } from 'ffp-js'
 export default {
   name: 'app',
+  data() {
+    return {
+      CONST: {
+        resourceURL: 'https://songsin-resource.s3.ap-northeast-2.amazonaws.com/image'
+      },
+      background: null
+    }
+  },
   components: {
-    HelloWorld
+    Navigation,
+    Container
+  },
+  created() {
+    eventBus.$on('change:background', path => {
+      match(path)
+        .case(path => path === '/weather')(_ => this.background = '/weather/background.jpg')
+        .case(path => path === '/notice')(_ => this.background = '/notice/background.jpg')
+        .case(path => path === '/birth_notice')(_ => this.background = '/birth/background.jpg')
+        .case(path => path === '/news')(_ => this.background = '/news/background.jpg')
+        .else(_ => _)
+    })
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '@/assets/style/app.scss';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 61rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>
