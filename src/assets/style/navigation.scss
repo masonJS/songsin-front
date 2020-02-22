@@ -1,0 +1,35 @@
+@import "mixin";
+
+#nav{
+  @include position (fixed, $t: 0);
+  @include box($w: 18rem, $h: 100%, $padding: 3.5rem 0rem);
+}
+
+#nav_list{
+  margin-top: 2rem;
+  padding: 2rem;
+  li{
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    a{
+      text-decoration: none;
+      display: flex;
+      padding-left: 2rem;
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      img{
+        width: 2rem;
+        height: 2rem;
+      }
+      .text{
+        margin-left: 3rem;
+        font-weight: 700;
+        font-size: 2.5rem;
+      }
+      .select{
+        color: #00bfff;
+      }
+    }
+  }
+}

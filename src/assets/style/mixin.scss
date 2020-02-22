@@ -1,0 +1,75 @@
+@mixin position( $p: absolute, $t: null, $r: null, $b: null, $l: null, $transform: null, $z: null) {
+  position : $p;
+  top : $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+  transform: $transform;
+  z-index: $z;
+}
+
+@mixin box(
+  $display: null,
+  $w: null,
+  $h: null,
+  $mw: null,
+  $mh: null,
+  $line-h: null,
+  $margin: null,
+  $padding: null,
+  $bg: null,
+  $radius: null,
+  $border: null,
+  $shadow: null,
+  $size: null,
+  $overflow: null,
+  $float: null,
+  $align: null
+)
+{
+  display: $display;
+  float: $float;
+  width: $w;
+  height: $h;
+  max-width: $mw;
+  max-height: $mh;
+  line-height: $line-h;
+  margin: $margin;
+  padding: $padding;
+  background-color: $bg;
+  border: $border;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  font-size: $size;
+  text-align: $align;
+  overflow: $overflow;
+}
+
+
+@mixin button($w: null, $h: null, $line-h: null, $p: null, $color: null, $border: null, $radius: 5px, $bg: null, $size: null) {
+  padding: $p;
+  width: $w;
+  height: $h;
+  line-height: $line-h;
+  color: $color;
+  border: $border;
+  border-radius: $radius;
+  background-color: $bg;
+  font-size: $size;
+  cursor: pointer;
+}
+
+@mixin font($style: normal, $weight: normal, $size: 1rem, $color: null, $align: null, $line-h: null, $space: null, $break: null, $spacing: null, $overflow: null ) {
+  font: {
+    style: $style;
+    weight: $weight;
+    size: $size;
+  }
+  color: $color;
+  text-align: $align;
+  line-height: $line-h;
+  white-space: $space;
+  word-break: $break;
+  text-overflow: $overflow;
+  letter-spacing: $spacing;
+}
