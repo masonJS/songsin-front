@@ -6,8 +6,11 @@
         <div class="text" :style="{ 'color': styleList[index].color }">{{ nav.text }}</div>
       </router-link>
     </li>
-    <li :style="{ 'background': settingStyle.background }">
-      <a @click='goSetting'>
+    <li :style="{ 'background': settingStyle.background }"
+        @mouseover="mouseOver"
+        @mouseleave="mouseLeave"
+    >
+      <a @click='goSetting' v-if="isSetting">
         <!--<img :src="navAdmin.image">-->
         <div class="text" :style="{ 'color': settingStyle.color }">{{ navAdmin.text }}</div>
       </a>
@@ -28,6 +31,7 @@ export default {
         { path: '/notice', image:'https://songsin-resource.s3.ap-northeast-2.amazonaws.com/image/megaphone.png', text:'공지'},
         { path: '/birth_notice', image:'https://songsin-resource.s3.ap-northeast-2.amazonaws.com/image/cake.png', text:'축일자'},
         { path: '/news', image:'https://songsin-resource.s3.ap-northeast-2.amazonaws.com/image/news.png', text:'뉴스'},
+        { path: '/sport_news', image:'https://songsin-resource.s3.ap-northeast-2.amazonaws.com/image/news.png', text:'스포츠'},
         ],
       styleList: [],
       settingStyle: { background: null, color: null },
@@ -35,7 +39,8 @@ export default {
         path: '/setting',
         image:'https://songsin-resource.s3.ap-northeast-2.amazonaws.com/image/gear.png',
         text:'설정'
-      }
+      },
+      isSetting: false
     }
   },
   created() {
@@ -45,10 +50,10 @@ export default {
     })
   },
   mounted() {
-    this.setSlider()
+    // this.setSlider()
   },
   beforeDestroy() {
-    clearInterval(this.timer)
+    // clearInterval(this.timer)
   },
   methods: {
     setSlider(time = 15000) {
@@ -63,27 +68,35 @@ export default {
       clearInterval(this.timer)
       this.$router.push(this.navAdmin.path)
     },
+    mouseOver() {
+      this.isSetting = true
+    },
+    mouseLeave() {
+      this.isSetting = false
+    },
     routing(path) {
       return match(path)
         .case(path => path === '/weather')
         (
           _ => (this.styleList = [
-            { background: '#cfb7bb', color: '#7c5d25'},
+            { background: '#cfb7bb', color: '#fdfdfd'},
             { background: '#d3e3d7', color: '#7c5d25'},
             { background: '#9ad0d6', color: '#7c5d25'},
-            { background: '#abaede', color: '#7c5d25'}
+            { background: '#abaede', color: '#7c5d25'},
+            { background: '#70b9e4', color: '#7c5d25'},
           ]),
-          _ => (this.settingStyle = ({ background: '#70b9e4', color: '#7c5d25' }))
+          _ => (this.settingStyle = ({ background: '#649ccc', color: '#7c5d25' }))
         )
         .case(path => path === '/notice')
         (
           _ => (this.styleList = [
-            { background: '#acdb71', color: '#588803'},
+            { background: '#acdb71', color: '#fdfdfd'},
             { background: '#e2ee65', color: '#588803'},
-            { background: '#feef39', color: '#588803'},
-            { background: '#b39eeb', color: '#e0efbc'}
+            { background: '#feef39', color: '#fdfdfd'},
+            { background: '#b39eeb', color: '#fdfdfd'},
+            { background: '#5c4794', color: '#fdfdfd'},
           ]),
-          _ => (this.settingStyle = ({ background: '#f7fdd0', color: '#588803' }))
+          _ => (this.settingStyle = ({ background: '#497318', color: '#fdfdfd' }))
         )
         .case(path => path === '/birth_notice')
         (
@@ -91,9 +104,10 @@ export default {
             { background: '#f35536', color: '#ffd9e3'},
             { background: '#ffa2ab', color: '#fb3f3d'},
             { background: '#fad0c4', color: '#fb3f3d'},
-            { background: '#fce2a1', color: '#fb3f3d'}
+            { background: '#fce2a1', color: '#fb3f3d'},
+            { background: '#eeb353', color: '#fb3f3d'},
           ]),
-          _ => (this.settingStyle = ({ background: '#eeb353', color: '#fb3f3d' }))
+          _ => (this.settingStyle = ({ background: '#f2c273', color: '#fb3f3d' }))
         )
         .case(path => path === '/news')
         (
@@ -101,9 +115,21 @@ export default {
             { background: '#95c8dd', color: '#084993'},
             { background: '#b4deef', color: '#084993'},
             { background: '#e5eff0', color: '#084993'},
-            { background: '#509ec2', color: '#084993'}
+            { background: '#333399', color: '#d0edf8'},
+            { background: '#36a3e0', color: '#084993'},
           ]),
-          _ => (this.settingStyle = ({ background: '#084993', color: '#b4deef' }))
+          _ => (this.settingStyle = ({ background: '#66d9c2', color: '#b4deef' }))
+        )
+        .case(path => path === '/sport_news')
+        (
+          _ => (this.styleList = [
+            { background: '#a2e7fc', color: '#77503e'},
+            { background: '#e2ee65', color: '#77503e'},
+            { background: '#feec95', color: '#77503e'},
+            { background: '#fec587', color: '#77503e'},
+            { background: '#fe5b5b', color: '#ffef99'},
+          ]),
+          _ => (this.settingStyle = ({ background: '#6ba7fe', color: '#77503e' }))
         )
         .else(_ => _)
     }
@@ -113,5 +139,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/style/navigation.scss';
-
 </style>

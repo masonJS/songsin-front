@@ -31,6 +31,7 @@ export default {
         .case(path => path === '/notice')(_ => this.background = '/notice/background.jpg')
         .case(path => path === '/birth_notice')(_ => this.background = '/birth/background.jpg')
         .case(path => path === '/news')(_ => this.background = '/news/background.jpg')
+        .case(path => path === '/sport_news')(_ => this.background = '/sport/background.jpg')
         .else(_ => _)
     })
   }

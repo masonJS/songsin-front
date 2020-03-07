@@ -25,6 +25,7 @@ SONGSIN.createBirth = (data) => songsin.post('/create_birth', data)
 
 SONGSIN.getUser = (id, pw) => songsin.get('/get_user', { params: { id, pw }})
 SONGSIN.getNewsTopic = _ => songsin.get('/get_news_topic')
+SONGSIN.getSportNewsTopic = _ => songsin.get('/get_sport_news_topic')
 SONGSIN.getDust = (stationName, dataTerm, pageNo, numOfRows, ver, ServiceKey) => songsin.get('/get_dust', { params: { stationName, dataTerm, pageNo, numOfRows, ver, ServiceKey }})
 SONGSIN.getNotice = _ => songsin.get('/get_notice')
 SONGSIN.getBirth = _ => songsin.get('/get_birth')
