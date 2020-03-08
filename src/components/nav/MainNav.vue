@@ -50,10 +50,10 @@ export default {
     })
   },
   mounted() {
-    // this.setSlider()
+    this.setSlider()
   },
   beforeDestroy() {
-    // clearInterval(this.timer)
+    clearInterval(this.timer)
   },
   methods: {
     setSlider(time = 15000) {

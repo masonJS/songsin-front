@@ -1,6 +1,6 @@
 <template>
   <div id="birth_notice">
-    <div class="birth_header"> {{ getMonth }}월 이번 주차에 생일을 맞으신 </div>
+    <div class="birth_header"> {{ getMonth }}월 이번 주차에 축일을 맞으신 </div>
     <div class="birth_list">
       <table class="modal-list">
         <thead>

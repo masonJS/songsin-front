@@ -2,11 +2,11 @@
   <div id="notice" v-if="content">
     <div class="notice">
       <div class="notice_title">학생회 공지</div>
-      <div class="notice_content">{{ content }}</div>
+      <p class="notice_content">{{ content }}</p>
     </div>
     <div class="student">
       <div class="student_title">통학생회 공지</div>
-      <div class="student_content">{{ student_content }}</div>
+      <p class="student_content">{{ student_content }}</p>
     </div>
     <div class="oli_logo"><img src="https://songsin-resource.s3.ap-northeast-2.amazonaws.com/image/common/oli_logo.png"></div>
   </div>
@@ -55,7 +55,9 @@
     }
     .notice_content{
       padding: 1rem;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
+      word-break: break-all;
+      white-space: pre-line;
     }
   }
   .student{
@@ -72,7 +74,9 @@
     }
     .student_content{
       padding: 1rem;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
+      word-break: break-all;
+      white-space: pre-line;
     }
   }
   .oli_logo{

@@ -44,7 +44,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 61rem;
+  height: 67.5rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -16,7 +16,7 @@
 <script>
   import { SONGSIN } from '@/api'
   import { eventBus } from "../utils/event";
-  import { go } from 'ffp-js'
+  import { go, map } from 'ffp-js'
   export default {
     name: "SportNews",
     data() {
@@ -36,9 +36,24 @@
           SONGSIN.getSportNewsTopic(),
           ({data}) => data,
           list => list.filter((_, index) => index< 5),
+          map(data => ({
+            img: data.img,
+            title: this.setNewsTitle(data.title.trim()),
+            description: data.description.trim()
+          })),
           list => (this.newsList = list)
         )
+      },
+
+      setNewsTitle (str, length = 36) {
+        return go(
+          str,
+          str => str.length > length
+            ? str.substr(0, length) + '..'
+            : str
+        )
       }
+
     }
   }
 </script>
