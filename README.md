@@ -1,5 +1,19 @@
 # songsin-front
 
+songsin university project based SPA to Vue.js
+
+## Structure
+
+src
+  - api
+  - assets
+  - components
+  - routes
+  - store
+  - utils
+  - views
+  
+
 ## Project setup
 ```
 npm install
@@ -15,15 +29,7 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
+### deploy
 ```
-npm run test
+npm run deploy
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
